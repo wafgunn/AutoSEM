@@ -9,13 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
-/* ═══════════════════════════════════════════════════════════════════════════
-   AutoSEM v14 — styled to the Foundry Style Guide (v2).
-   Tokens are the guide's, verbatim; components below map AutoSEM's own class
-   names onto the guide's canonical controls. Every class the script toggles
-   (.active .selected .placing .moving .checked .done .hidden .visible .open
-   .dragging .editing …) is kept.
-   ═══════════════════════════════════════════════════════════════════════════ */
+/* AutoSEM styles. Keep every class the script toggles. */
 :root {
   color-scheme: dark;
   --void: #0a0c10; --surface: #0d1117;
@@ -57,9 +51,7 @@ svg.ic { width: 14px; height: 14px; flex-shrink: 0; fill: none; stroke: currentC
 ::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--line-hover); }
 
-/* ══ Buttons — one base, five looks ══════════════════════════════════════
-   v13 restated the same button thirteen times with different fills; they now
-   share this base and pick a look. Outline at rest, tint on intent. */
+/* ══ Buttons ═════════════════════════════════════════════════════════════ */
 .nav-btn, .tb-btn, .open-label, .place-btn, .array-btn-el, .place-array-btn,
 .import-btn, .import-single-btn, .snap-all-btn, .grp-btn, .dl-btn, .modal-btn, .back-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
@@ -71,24 +63,24 @@ svg.ic { width: 14px; height: 14px; flex-shrink: 0; fill: none; stroke: currentC
 .nav-btn:disabled, .tb-btn:disabled, .place-btn:disabled, .array-btn-el:disabled, .grp-btn:disabled,
 .dl-btn:disabled, .modal-btn:disabled, .snap-all-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
-/* Primary — the next action. */
+/* Primary */
 .nav-btn.primary, .open-label, .place-btn, .array-btn-el, .place-array-btn,
 .import-btn, .dl-btn, .modal-btn.primary { border-color: var(--blue-edge); color: var(--blue); }
 .nav-btn.primary:hover:not(:disabled), .open-label:hover, .place-btn:hover, .array-btn-el:hover,
 .place-array-btn:hover, .import-btn:hover, .dl-btn:hover:not(:disabled), .modal-btn.primary:hover {
   background: var(--blue-tint); border-color: var(--blue); color: var(--blue-bright);
 }
-/* Primary, engaged — a placing mode or an open popup the button owns. */
+/* Primary, engaged (placing mode or open popup) */
 .place-btn.placing, .place-array-btn.placing, .array-btn-el.active, .array-btn-el.active:hover {
   background: var(--blue-tint-2); border-color: var(--blue); color: var(--blue-bright);
 }
-/* Ghost — secondary and cancel. */
+/* Ghost (secondary, cancel) */
 .nav-btn, .import-single-btn, .snap-all-btn, .grp-btn, .modal-btn, .back-btn { border-color: var(--line-strong); }
 .nav-btn:hover:not(:disabled), .import-single-btn:hover, .snap-all-btn:hover, .grp-btn:hover:not(:disabled),
 .modal-btn:hover, .back-btn:hover { border-color: var(--line-hover); color: var(--text-2); background: rgba(139,148,158,0.06); }
-/* Danger — grey until the pointer reaches it. */
+/* Danger (grey until hover) */
 .tb-btn.warn:hover { border-color: var(--red); color: var(--red); background: rgba(248,81,73,0.06); }
-/* Destroy — the red verb in a confirm. */
+/* Destroy (confirm dialogs) */
 .modal-btn.danger { background: var(--red-tint); border-color: rgba(248,81,73,0.4); color: var(--red); }
 .modal-btn.danger:hover { background: rgba(248,81,73,0.25); border-color: var(--red); color: var(--red); }
 
@@ -139,7 +131,7 @@ svg.ic { width: 14px; height: 14px; flex-shrink: 0; fill: none; stroke: currentC
 .tb-hint { margin-left: 6px; font-size: var(--fs-xs); font-weight: 500; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .tb-zoom { margin-left: auto; font-size: var(--fs-xs); font-weight: 600; color: var(--text-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
 
-/* ══ Popovers — zoom speed, scan array, tips, import menu, group options ═══ */
+/* ══ Popovers ════════════════════════════════════════════════════════════ */
 .zoom-sens-panel, .array-popup, .mapping-tip, .arr-min-tip, .import-single-panel, .fgo-popup {
   background: var(--glass-strong); border: 1px solid var(--line-strong); border-radius: var(--r-lg);
   box-shadow: var(--shadow-menu); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
@@ -160,7 +152,7 @@ svg.ic { width: 14px; height: 14px; flex-shrink: 0; fill: none; stroke: currentC
 .zoom-sens-custom-label, .zoom-sens-unit { font-size: var(--fs-xs); color: var(--text-3); flex-shrink: 0; }
 .zoom-sens-err-msg { display: none; font-size: var(--fs-xs); color: var(--red); }
 
-/* ══ Inputs — wells cut into the surface ═════════════════════════════════ */
+/* ══ Inputs ══════════════════════════════════════════════════════════════ */
 .zoom-sens-num, .mini-input, .param-input, .array-input, .scan-select {
   min-width: 0; padding: 6px 9px;
   background: var(--void); border: 1px solid var(--line-strong); border-radius: var(--r-md);
@@ -247,7 +239,7 @@ body.drag-over #canvas-wrap { outline: 2px dashed var(--blue); outline-offset: -
 }
 .stat-label { color: var(--text-4); }
 
-/* ══ Step 2 — placing frames ═════════════════════════════════════════════ */
+/* ══ Step 2 ══════════════════════════════════════════════════════════════ */
 .scan-controls { display: flex; flex-direction: column; gap: 10px; padding: 12px; border-bottom: 1px solid var(--line); flex-shrink: 0; }
 .scan-controls label {
   display: block; margin-bottom: 6px;
@@ -286,7 +278,7 @@ body.drag-over #canvas-wrap { outline: 2px dashed var(--blue); outline-offset: -
 .dt-size { margin-left: auto; color: var(--text-4); font-size: var(--fs-xs); }
 .fgo-popup { position: fixed; z-index: 1200; padding: 4px; min-width: 210px; }
 
-/* Segmented control — Auto / Custom */
+/* Segmented control (Auto / Custom) */
 .import-mode-tabs { display: flex; gap: 4px; }
 .import-mode-tab {
   flex: 1; display: flex; align-items: center; justify-content: center; padding: 6px 8px;
@@ -371,7 +363,7 @@ body.drag-over #canvas-wrap { outline: 2px dashed var(--blue); outline-offset: -
 .unlinked-header span { flex: 1; }
 .unlinked-header.vis-hidden { opacity: 0.45; }
 
-/* Mode banners — "click a group", "confirm merge" */
+/* Mode banners */
 .pick-action-row, .merge-action-row {
   display: none; align-items: center; gap: 6px; padding: 7px 10px; flex-shrink: 0;
   background: var(--blue-tint); border-bottom: 1px solid rgba(88,166,255,0.25);
@@ -380,7 +372,7 @@ body.drag-over #canvas-wrap { outline: 2px dashed var(--blue); outline-offset: -
 .pick-msg { flex: 1; font-size: var(--fs-xs); font-weight: 600; color: var(--blue); }
 .frame-count { flex-shrink: 0; padding: 8px 12px; border-top: 1px solid var(--line); background: var(--surface); font-size: var(--fs-xs); color: var(--text-3); font-variant-numeric: tabular-nums; }
 
-/* ══ Step 3 — export ═════════════════════════════════════════════════════ */
+/* ══ Step 3 ══════════════════════════════════════════════════════════════ */
 #export-page { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 .export-inner { flex: 1; display: flex; overflow: hidden; }
 .export-preview { flex: 1; position: relative; overflow: hidden; background: var(--void); }
@@ -410,15 +402,14 @@ table.frame-table tr.ft-wf-change td { padding: 3px 8px; background: var(--amber
 }
 .sem-model-btn:hover { background: rgba(33,38,45,0.9); border-color: var(--line-hover); }
 .sem-model-btn.selected { border-color: var(--blue); background: var(--blue-tint); }
-/* The product shot is on white; it sits in its own white tile rather than
-   being washed out underneath the label. */
+/* Product image tile */
 .sem-model-img { height: 112px; border-radius: var(--r-md); background: #fff center / contain no-repeat; }
 .sem-model-name { padding: 0 2px; font-size: var(--fs-md); font-weight: 700; color: var(--text); }
 .sem-model-meta { padding: 0 2px; margin-top: -5px; font-size: var(--fs-2xs); font-weight: 500; color: var(--text-3); }
 
 #raith-eline-panel { display: none; flex-direction: column; flex: 1; min-height: 0; }
 #raith-eline-panel.visible { display: flex; }
-/* Params scroll before the preview collapses, so the download row never leaves the window. */
+/* Scrollable parameters */
 .raith-params { display: flex; flex-direction: column; gap: 8px; padding: 12px; flex: 0 1 auto; min-height: 0; border-bottom: 1px solid var(--line); overflow-y: auto; }
 .raith-eline-panel-head { display: flex; align-items: center; gap: 10px; }
 .back-btn { padding: 5px 10px; font-size: var(--fs-xs); font-weight: 700; flex-shrink: 0; }
@@ -437,7 +428,7 @@ table.frame-table tr.ft-wf-change td { padding: 3px 8px; background: var(--amber
 }
 .preview-tab:hover { color: var(--text-2); }
 .preview-tab.active { color: var(--text); border-bottom-color: var(--blue); }
-/* File source — the one place a monospace face belongs. */
+/* File source (monospace) */
 .preview-code {
   display: none; flex: 1; min-height: 120px; overflow: auto; padding: 10px 12px;
   background: var(--void); color: var(--text-2);
@@ -775,7 +766,7 @@ table.frame-table tr.ft-wf-change td { padding: 3px 8px; background: var(--amber
             <tbody id="frame-tbody"></tbody>
           </table>
         </div>
-        <!-- SEM Models landing page (default) -->
+        <!-- SEM model selection -->
         <div id="sem-models-panel">
           <div class="sem-models-inner">
             <div class="sem-panel-head">SEM Models</div>
@@ -784,7 +775,7 @@ table.frame-table tr.ft-wf-change td { padding: 3px 8px; background: var(--amber
             </div>
           </div>
         </div>
-        <!-- Raith eLine Parameters (shown after model selected) -->
+        <!-- Raith eLine parameters -->
         <div id="raith-eline-panel">
           <div class="raith-params">
             <div class="raith-eline-panel-head">
@@ -992,7 +983,7 @@ function readStr(v,s,l){var r='';for(var i=0;i<l;i++){var c=v.getUint8(s+i);if(!
 function readF64(v,o){var hi=v.getUint32(o),lo=v.getUint32(o+4),sign=(hi>>31)?-1:1,exp=((hi>>24)&0x7F)-64,mant=((hi&0xFFFFFF)*0x100000000+lo)/(Math.pow(2,56));return sign*mant*Math.pow(16,exp);}
 
 // ═══════════════════════════════════════════════
-// GDS WRITER — writes full library + injected scan frames
+// GDS WRITER
 // ═══════════════════════════════════════════════
 function writeFullGDS(gdsLib, scanBounds, activeCellName){
   // scanBounds: [{layer, datatype, xy}] injected into activeCellName
@@ -1031,7 +1022,7 @@ function writeFullGDS(gdsLib, scanBounds, activeCellName){
     var cell=gdsLib.cells[cname];
     rec(0x05,0x02,new Array(24).fill(0)); // BGNSTR
     rec(0x06,0x06,str2(cell.name||cname)); // STRNAME
-    // Boundaries (skip overlay markers; if active cell inject scan bounds at end)
+    // Boundaries (skip overlays; append scan bounds to active cell)
     var bounds=cell.boundaries.filter(function(b){return !b._scanOverlay;});
     if(cname===activeCellName&&scanBounds)bounds=bounds.concat(scanBounds);
     for(var i=0;i<bounds.length;i++){
@@ -1057,7 +1048,7 @@ function writeFullGDS(gdsLib, scanBounds, activeCellName){
       var t=cell.texts[i];if(!t.xy||!t.xy.length)continue;
       rec(0x0C,0x00,null);              // TEXT
       rec(0x0D,0x02,i16(t.layer||0));   // LAYER
-      rec(0x16,0x02,i16(t.datatype||0));// TEXTTYPE (not DATATYPE 0x0E — different record type required for TEXT elements)
+      rec(0x16,0x02,i16(t.datatype||0));// TEXTTYPE (0x16; TEXT elements do not use DATATYPE)
       rec(0x10,0x03,xyRec([t.xy[0]]));  // XY
       if(t.string)rec(0x19,0x06,str2(t.string)); // STRING (0x19 per GDSII spec)
       rec(0x11,0x00,null);              // ENDEL
@@ -1102,10 +1093,10 @@ function buildDemo(){
 
 // ═══════════════════════════════════════════════
 // ZOOM SENSITIVITY
-// Sensitivity display: 0.1 – 10 (log scale, 1.0 = middle)
-// Zoom factor = 1 + sensitivity * 1.5  →  sens=1.0 → factor=2.5
+// Sensitivity 0.1 to 10 on a log slider (1.0 at centre)
+// Wheel factor = 1 + 0.15 × sensitivity
 // ═══════════════════════════════════════════════
-var zoomSensitivity=1.15; // wheel zoom factor; default sens=1.0
+var zoomSensitivity=1.15; // wheel zoom factor (sensitivity 1.0)
 function _sensToFactor(s){return 1+s*0.15;}
 function _sliderToSens(p){return Math.pow(10,(parseFloat(p)-50)/50);}
 function _sensToSlider(s){return 50+50*Math.log10(Math.max(0.1,Math.min(10,s)));}
@@ -1157,7 +1148,7 @@ document.addEventListener('click',function(e){
 // STATE
 // ═══════════════════════════════════════════════
 var lib=null, activeCell=null, hiddenLayers=new Set();
-var rawGDSBuffer=null; // original file bytes — used for binary-level injection on export
+var rawGDSBuffer=null; // original file bytes, for binary injection on export
 var currentStep=1;
 var panX=0, panY=0, zoom=1;
 var scanFrames=[];
@@ -1167,9 +1158,9 @@ var selectBoxStart=null,selectBoxEnd=null,selectBoxDragging=false;
 var movingMultiple=false,moveMultiOrigins=null,moveMultiDragStart=null;
 var frameGroups=[], nextGroupId=1, nextGroupNum=1, activeGroupId=null;
 var undoStack=[];
-var clearAllUndo=null; // stores pre-clear state for one-level undo
+var clearAllUndo=null; // pre-clear state for one-level undo
 var unlinkedHidden=false;
-// Centre-drag: detect hover within this many screen px of centre dot
+// Centre-dot hover radius (screen px)
 var importMode='auto';
 var activePreview='pls';
 var arrayRows=2,arrayCols=2,arrayRowSpacing=0.008,arrayColSpacing=0.008;
@@ -1184,13 +1175,13 @@ var tool1='pan', tool2='pan', tool3='pan';
 var renderCache=[];
 var renderCacheDirty=true;
 
-// Scan frame overlay boundaries injected into the viewer (step 1)
-// [{layer,datatype,xy}] in GDS internal units, kept in sync whenever frames change
+// Scanframe overlay boundaries for the Step 1 viewer
+// [{layer,datatype,xy}] in GDS database units
 var frameOverlayBounds=[];
 
 var LPAL=['#3fb950','#58a6ff','#ff7b72','#e3b341','#bc8cff','#79c0ff','#ffa657','#ff6e96','#a5f3fc','#4ade80','#facc15'];
 var SCAN_COLORS=['#ff6e96','#e3b341','#58a6ff','#3fb950','#bc8cff','#79c0ff','#ffa657','#ff7b72','#a5f3fc','#f97316'];
-// DT index 0→size 1, 1→5, ..., 9→100
+// Datatype index → scanframe size (µm)
 var DT_TO_SIZE=[1,5,10,15,20,25,30,50,75,100];
 var SIZE_TO_DT={1:0,5:1,10:2,15:3,20:4,25:5,30:6,50:7,75:8,100:9};
 var SIZE_TO_PROFILE={1:'1um_bss1nm',5:'5um_bss2nm',10:'10um_bss4nm',15:'15um_bss6nm',
@@ -1213,14 +1204,14 @@ function snapToNm(v){
 }
 
 // ═══════════════════════════════════════════════
-// SCAN FRAME OVERLAY  (injected into active cell so they render in Step 1 viewer)
+// SCAN FRAME OVERLAY
 // Called whenever scanFrames changes
 // ═══════════════════════════════════════════════
 function rebuildFrameOverlay(){
   if(!lib||!activeCell)return;
-  // Remove old overlay boundaries from the active cell
+  // Remove existing overlay boundaries
   activeCell.boundaries=activeCell.boundaries.filter(function(b){return !b._scanOverlay;});
-  // Add new
+  // Add current frames
   var dbunit=lib.dbunit;
   for(var i=0;i<scanFrames.length;i++){
     var f=scanFrames[i];
@@ -1232,9 +1223,9 @@ function rebuildFrameOverlay(){
       xy:[[x0,y0],[x1,y0],[x1,y1],[x0,y1],[x0,y0]]
     });
   }
-  // Ensure each 500/dt pair used by scan overlays is registered
+  // Register each 500/dt layer used by overlays
   for(var _oi=0;_oi<scanFrames.length;_oi++){var _odt=(SIZE_TO_DT[scanFrames[_oi].sizeUm]!=null)?SIZE_TO_DT[scanFrames[_oi].sizeUm]:4;getLC(500,_odt);}
-  // Mark render cache dirty so Step 1 viewer picks up changes
+  // Invalidate render cache
   renderCacheDirty=true;
   rebuildLayerList();
 }
@@ -1324,8 +1315,8 @@ var PLS_COLS='[COLUMNS]\nNo.=W:25,!VISIBLE,!SHOWDIM\nID=W:25,VISIBLE,!SHOWDIM\nX
 var TRAILING=',,,,,,,,,,,,,,,,,,,,,,,,';  // fields 21-44 (Pos1…MarkSequences) all empty
 
 // ── Write Field table ─────────────────────────────────────────────
-// Maps scan frame size → minimum sufficient write field.
-// WF must be ≥ scan size. Available WF sizes: 1, 5, 10, 20, 50, 100 µm.
+// Writefield sizes (µm) and magnification labels
+// Writefield must exceed the scanframe size
 var WF_TABLE=[
   {wf:1,   size:'1.000',   label:'130000 x, 1.0 um'},
   {wf:5,   size:'5.000',   label:'26000 x, 5.0 um'},
@@ -1335,21 +1326,20 @@ var WF_TABLE=[
   {wf:100, size:'100.000', label:'1300 x, 100.0 um'},
   {wf:200, size:'200.000', label:'650 x, 200.0 um'},
 ];
-// Next-larger WF index for each scan frame size (WF must be strictly > scan size)
+// Writefield index per scanframe size
 var SIZE_TO_WF_IDX={1:1,5:2,10:3,15:3,20:4,25:4,30:4,50:5,75:5,100:6};
 function getWF(sizeUm){
   var idx=SIZE_TO_WF_IDX[sizeUm];
   if(idx===undefined){
-    // fallback: find first WF strictly > sizeUm
+    // fallback: first writefield > sizeUm
     for(var i=0;i<WF_TABLE.length;i++){if(WF_TABLE[i].wf>sizeUm)return WF_TABLE[i];}
     return WF_TABLE[WF_TABLE.length-1];
   }
   return WF_TABLE[idx];
 }
 
-// Returns scan frames ordered for export: grouped frames (in group order,
-// smallest-first within each group) then ungrouped frames.
-// Each entry: {f: frameObj, groupName: string}
+// Export order: grouped frames by group, then ungrouped
+// Returns [{f, groupName}]
 function getOrderedFramesForExport(){
   var result=[], inGroup=new Set();
   for(var gi=0;gi<frameGroups.length;gi++){
@@ -1396,19 +1386,15 @@ function generatePLS(){
   var out='[HEADER]\n'+PLS_FORMAT+'\nWAFERLAYOUT=DEFAULT.wlo\nLotID='+p.lot+'\nWaferID='+p.wafer+'\nSlot='+p.slot+'\nMinimizeWin=FALSE\n\n';
   out+=PLS_COLS+'\n\n[DATA]\n';
   if(!N)return out;
-  // Scan frames get IDs 1..N.
-  // Helper commands (WRITEFIELD, WAIT) get IDs N+1, N+2, ... in the order they appear.
+  // Scanframe IDs 1..N; WRITEFIELD and WAIT lines from N+1
   var nextId=N+1;
   var curWF=null;
   for(var i=0;i<N;i++){
     var item=ordered[i], f=item.f;
     var wf=getWF(f.sizeUm);
-    // ── WRITEFIELD: insert before any frame whose required WF differs from current ──
+    // ── WRITEFIELD ──
     if(!curWF||curWF.wf!==wf.wf){
-      // Format: id, 9×zero, FN, dUV, empty comment, STAY, WRITEFIELD, sizeU, sizeV,
-      //         9 empty cols (17-24 + separator = 9 commas → cols 17-25 offset),
-      //         wait: 11 commas to col 25 but for WF col 25 is reached with 9 commas from col 16.
-      // Cols 16→25 needs 9 separators: ,,,,,,,,,  then label then 17 trailing.
+      // id, 8 zero fields, FN, dUV, STAY, WRITEFIELD, size, size, label
       out+=nextId+',0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,FN,dUV,,STAY,WRITEFIELD,'+wf.size+','+wf.size+',,,,,,,,,\"'+wf.label+'\",,,,,,,,,,,,,,,,,,,,,\n';
       nextId++;
       curWF=wf;
@@ -1416,7 +1402,7 @@ function generatePLS(){
     // ── SCAN FRAME coords ──
     var xum=toUm(f.cx),yum=toUm(f.cy);
     var u=umToMM(xum),v=umToMM(yum);
-    // ── WAIT: same U,V as the SLOWSCAN that follows ──
+    // ── WAIT ──
     out+=nextId+',0.000000,0.000000,0.000000,0.000000,0.000000,'+u+','+v+',0.000000,MN,UV,wait_'+p.waitSec+'s,,MACRO,,,,,,,,,,,%UserRoot%SCRIPT\\WAIT.JS,,,,,,,,,,,,,,,,,,,,,\n';
     nextId++;
     // ── SCAN FRAME ──
@@ -1443,7 +1429,7 @@ function generateTXT(){
     var xum=toUm(f.cx).toFixed(6);
     var yum=toUm(f.cy).toFixed(6);
     var step=SIZE_TO_MIN_SPACING[f.sizeUm]||0;
-    // Format step cleanly (e.g. 0.008 not 0.008000)
+    // Strip trailing zeros
     var stepStr=parseFloat(step.toFixed(6)).toString();
     lines.push((i+1)+', '+xum+', '+yum+', '+f.sizeUm+', '+stepStr+', # '+item.groupName);
   }
@@ -1451,11 +1437,11 @@ function generateTXT(){
 }
 
 // ═══════════════════════════════════════════════
-// GDS DOWNLOAD — binary injection into original file bytes
-// Avoids re-serialisation bugs; only the new scan boundaries are written from scratch.
+// GDS DOWNLOAD
+// Copies original bytes; writes only the scanframe boundaries
 // ═══════════════════════════════════════════════
 function buildScanFrameRecords(){
-  // Returns a Uint8Array of valid GDS boundary records for every scan frame
+  // BOUNDARY records for all scanframes (Uint8Array)
   var recs=[];
   function wr(type,dtype,data){
     var len=4+(data?data.length:0);if(len%2)len++;
@@ -1487,7 +1473,7 @@ function buildScanFrameRecords(){
 }
 
 function findCellEndStrPos(buf,cellName){
-  // Walk binary GDS records to find byte offset of ENDSTR (0x07,0x00) for cellName
+  // Byte offset of ENDSTR (0x07,0x00) in cellName
   var view=new DataView(buf);
   var pos=0,inTarget=false;
   while(pos<buf.byteLength-3){
@@ -1502,8 +1488,8 @@ function findCellEndStrPos(buf,cellName){
 }
 
 function stripLayer500FromCell(buf,cellName){
-  // Walk GDS binary, remove all BOUNDARY elements on layer 500 within the target cell.
-  // Returns a new ArrayBuffer with those elements removed.
+  // Remove layer 500 BOUNDARY elements from the target cell
+  // Returns a new ArrayBuffer
   var view=new DataView(buf);
   var pos=0,inTarget=false;
   var keep=[];       // array of {start, end} byte ranges to keep
@@ -1516,11 +1502,11 @@ function stripLayer500FromCell(buf,cellName){
     if(rtype===0x06&&dtype===0x06) // STRNAME
       inTarget=(readStr(view,pos+4,len-4)===cellName);
 
-    if(rtype===0x07&&dtype===0x00&&inTarget) inTarget=false; // ENDSTR – leave target
+    if(rtype===0x07&&dtype===0x00&&inTarget) inTarget=false; // ENDSTR: leave target cell
 
-    // Detect BOUNDARY start inside target cell
+    // BOUNDARY inside target cell
     if(rtype===0x08&&dtype===0x00&&inTarget){
-      // Walk ahead to find LAYER record value
+      // Find its LAYER value
       var elStart=pos;
       var p2=pos+len,foundLayer500=false;
       while(p2<buf.byteLength-3){
@@ -1530,13 +1516,13 @@ function stripLayer500FromCell(buf,cellName){
           var layerVal=view.getInt16(p2+4);
           if(layerVal===500) foundLayer500=true;
         }
-        if(r2===0x11&&d2===0x00){ // ENDEL – end of this element
+        if(r2===0x11&&d2===0x00){ // ENDEL
           p2+=l2; break;
         }
         p2+=l2;
       }
       if(foundLayer500){
-        // Exclude this element: keep everything before it, skip it
+        // Drop this element
         if(elStart>segStart) keep.push({start:segStart,end:elStart});
         segStart=p2;
         pos=p2;
@@ -1562,7 +1548,7 @@ function stripLayer500FromCell(buf,cellName){
 }
 
 function stripLayer500DTFromCell(buf,cellName,targetDt){
-  // Like stripLayer500FromCell but only removes BOUNDARY elements on layer 500 with a specific datatype.
+  // As stripLayer500FromCell, for one datatype only
   var view=new DataView(buf);
   var pos=0,inTarget=false;
   var keep=[];
@@ -1606,12 +1592,12 @@ function downloadGDS(){
   var newRecs=buildScanFrameRecords();
   var blob;
   if(rawGDSBuffer&&activeCell){
-    // ── Strip existing layer 500 boundaries, then inject new ones ──
+    // ── Replace layer 500 boundaries ──
     var cleanBuf=stripLayer500FromCell(rawGDSBuffer,activeCell.name);
     var insertPos=findCellEndStrPos(cleanBuf,activeCell.name);
     var orig=new Uint8Array(cleanBuf);
     if(insertPos<0){
-      // Fallback: insert just before ENDLIB (last 4 bytes: 00 04 04 00)
+      // Fallback: insert before ENDLIB (00 04 04 00)
       insertPos=orig.length-4;
     }
     var out=new Uint8Array(orig.length+newRecs.length);
@@ -1620,7 +1606,7 @@ function downloadGDS(){
     out.set(orig.subarray(insertPos),insertPos+newRecs.length);
     blob=new Blob([out],{type:'application/octet-stream'});
   } else {
-    // ── Demo / no raw buffer: write a stub GDS with scan frames only ──
+    // ── No source file: scanframes-only GDS ──
     var dbunit=lib?lib.dbunit:1e-9;
     var scanBounds=[];
     for(var i=0;i<scanFrames.length;i++){
@@ -1684,7 +1670,7 @@ function collectBoundaries(cell,cells,tx,ty,vis){
   var result=[];
   for(var i=0;i<cell.boundaries.length;i++){
     var b=cell.boundaries[i];
-    if(b._scanOverlay)continue; // skip our own injected overlays
+    if(b._scanOverlay)continue; // skip overlays
     var shifted=b.xy.map(function(pt){return[pt[0]+tx,pt[1]+ty];});
     result.push({layer:b.layer,datatype:b.datatype,xy:shifted});
   }
@@ -1705,7 +1691,7 @@ function importAutoFrames(){
   if(!lib||!activeCell){showModal('No GDS loaded','Load a GDS file in Step 1 first.','',true);return;}
   var boundaries=collectBoundaries(activeCell,lib.cells,0,0,new Set());
   var newFrames=[];
-  // Collect per-DT group, rasterSort each group independently, concatenate in DT order
+  // Raster-sort each datatype, then concatenate in datatype order
   for(var dt=0;dt<DT_TO_SIZE.length;dt++){
     var sizeUm=DT_TO_SIZE[dt];
     var group=[];
@@ -1722,7 +1708,7 @@ function importAutoFrames(){
     }
   }
   if(!newFrames.length){showModal('No frames found','No boundaries on layers 500/0–500/9.','',true);return;}
-  // Copy 500/dt → 501/dt in lib.cells so custom import can still find these positions
+  // Copy 500/dt to 501/dt for custom import
   Object.values(lib.cells).forEach(function(cell){
     var mirrors=[];
     cell.boundaries.forEach(function(b){
@@ -1731,15 +1717,15 @@ function importAutoFrames(){
     for(var m=0;m<mirrors.length;m++) cell.boundaries.push(mirrors[m]);
   });
   for(var hdt=0;hdt<DT_TO_SIZE.length;hdt++){hiddenLayers.add('501/'+hdt);}
-  // Remove originals from lib.cells so they don't render as duplicate overlays
+  // Remove originals (avoid duplicate overlays)
   Object.values(lib.cells).forEach(function(cell){
     cell.boundaries=cell.boundaries.filter(function(b){return b.layer!==500;});
   });
-  // Strip 500/* from raw GDS binary so export is clean
+  // Strip 500/* from the raw GDS
   if(rawGDSBuffer&&activeCell){
     rawGDSBuffer=stripLayer500FromCell(rawGDSBuffer,activeCell.name);
   }
-  // Replace existing scan frames (not append)
+  // Replace existing scanframes
   frameGroups=[];activeGroupId=null;
   scanFrames=newFrames;
   undoStack=[];
@@ -1754,14 +1740,14 @@ function toggleImportSinglePanel(){
   var isOpen=panel.style.display==='block';
   if(isOpen){panel.style.display='none';btn.classList.remove('open');return;}
   btn.classList.add('open');
-  // Measure height while invisible, then position above the button
+  // Measure hidden, then place above the button
   panel.style.visibility='hidden';
   panel.style.width='auto';
   panel.style.display='block';
   var r=btn.getBoundingClientRect();
   var ph=panel.offsetHeight;
   var top=r.top-ph-4;
-  if(top<8)top=r.bottom+4; // fall back below if not enough room above
+  if(top<8)top=r.bottom+4; // below if no room above
   var left=r.left;
   if(left+r.width>window.innerWidth-8)left=window.innerWidth-r.width-8;
   panel.style.left=left+'px';
@@ -1783,22 +1769,22 @@ function importSingleLayer500(dt){
   }
   if(!newFrames.length){showModal('No frames found','No boundaries on layer 500/'+dt+'.','',true);return;}
   newFrames=rasterSort(newFrames);
-  // Copy 500/dt → 501/dt in lib.cells so custom import can still find these positions
+  // Copy 500/dt to 501/dt for custom import
   Object.values(lib.cells).forEach(function(cell){
     var mirrors=cell.boundaries.filter(function(b){return b.layer===500&&b.datatype===dt;})
       .map(function(b){return Object.assign({},b,{layer:501});});
     for(var m=0;m<mirrors.length;m++) cell.boundaries.push(mirrors[m]);
   });
   hiddenLayers.add('501/'+dt);
-  // Remove originals from lib.cells so they don't render as duplicate overlays
+  // Remove originals (avoid duplicate overlays)
   Object.values(lib.cells).forEach(function(cell){
     cell.boundaries=cell.boundaries.filter(function(b){return!(b.layer===500&&b.datatype===dt);});
   });
-  // Strip only this DT from raw GDS binary so export is clean
+  // Strip this datatype from the raw GDS
   if(rawGDSBuffer&&activeCell){
     rawGDSBuffer=stripLayer500DTFromCell(rawGDSBuffer,activeCell.name,dt);
   }
-  // Append to existing scan frames (single-layer import is additive)
+  // Append (single-layer import)
   undoStack.push({type:'import',count:newFrames.length});
   for(var j=0;j<newFrames.length;j++)scanFrames.push(newFrames[j]);
   createFrameGroup(newFrames.slice(),getUniqueGroupName('500/'+dt+' ('+sizeUm+'\u00b5m)'));
@@ -1874,7 +1860,7 @@ function showModal(title,desc,result,warn){
   var r=document.getElementById('modal-result');r.textContent=result||'';
   r.className='modal-result'+(warn?' warn':'');r.style.display=result?'block':'none';
   document.getElementById('import-modal').classList.remove('hidden');
-  // Auto-focus the OK button so pressing Enter immediately dismisses the modal
+  // Focus OK so Enter dismisses
   setTimeout(function(){
     var okBtn=document.querySelector('#import-modal .modal-btn.primary');
     if(okBtn)okBtn.focus();
@@ -1915,8 +1901,8 @@ function saveFileAs(blob,suggestedName,types){
   }
 }
 function showDownloadModal(blob,filename){
-  // Build a data: URI and present a visible <a> link the user clicks directly.
-  // This avoids the programmatic-click permission dialog in Safari on file:// pages.
+  // data: URI link clicked by the user
+  // (avoids Safari's download prompt on file:// pages)
   var reader=new FileReader();
   reader.onload=function(e){
     var link=document.getElementById('dl-modal-link');
@@ -1926,11 +1912,11 @@ function showDownloadModal(blob,filename){
     document.getElementById('dl-modal-title').textContent='Ready to Download';
     var modal=document.getElementById('download-modal');
     modal.classList.remove('hidden');
-    // Clicking the link dismisses the modal automatically
+    // Link click closes the modal
     link.onclick=function(){
       setTimeout(function(){modal.classList.add('hidden');},200);
     };
-    // Auto-focus so pressing Enter immediately triggers the download
+    // Focus link so Enter downloads
     setTimeout(function(){link.focus();},50);
   };
   reader.readAsDataURL(blob);
@@ -1950,7 +1936,7 @@ function goStep(n){
   if(n<1||n>3)return;
   var apop=document.getElementById('array-popup');if(apop)apop.classList.add('hidden');
   if(arrayPlacingMode)cancelArrayPlacing();
-  // Capture current canvas size before the DOM switches, so we can compensate pan
+  // Canvas size before the step switch
   var fromCanvas=currentStep===1?canvas:currentStep===2?scanCanvas:exportCanvas;
   var oldW=fromCanvas.width,oldH=fromCanvas.height;
   currentStep=n;
@@ -1966,7 +1952,7 @@ function goStep(n){
   setTimeout(function(){
     var toCanvas=n===1?canvas:n===2?scanCanvas:exportCanvas;
     resizeCanvas(toCanvas);
-    // Shift pan so the same world point stays centred across different canvas widths/heights
+    // Keep the same world point centred
     if(oldW>0){panX+=(toCanvas.width-oldW)/2;}
     if(oldH>0){panY+=(toCanvas.height-oldH)/2;}
     if(n===1){rebuildFrameOverlay();redraw();}
@@ -2108,10 +2094,10 @@ function drawGrid(c2,c){
   for(var y=panY%ss;y<c.height;y+=ss){c2.beginPath();c2.moveTo(0,y);c2.lineTo(c.width,y);c2.stroke();}
 }
 
-// Ruler state (shared — only one canvas active at a time)
+// Ruler state (shared by all canvases)
 var rulerPt1=null,rulerPt2=null,rulerComplete=false;
 function axisSnap(wx,wy){
-  // Constrain to horizontal or vertical from rulerPt1 based on dominant direction
+  // Snap to horizontal or vertical
   if(!rulerPt1)return[wx,wy];
   var dx=wx-rulerPt1[0],dy=wy-rulerPt1[1];
   return Math.abs(dx)>=Math.abs(dy)?[wx,rulerPt1[1]]:[rulerPt1[0],wy];
@@ -2233,7 +2219,7 @@ function setTool(step,tool){
   if(step===1)redraw(); else if(step===2)redrawScan(); else redrawExport();
 }
 
-// Wire toolbar buttons for all 3 steps
+// Toolbar buttons, all steps
 [[1,'btn-pan','pan'],[1,'btn-select','select'],[1,'btn-ruler','ruler'],[1,'btn-zoombox','zoombox'],
  [2,'s2-pan','pan'],[2,'s2-select','select'],[2,'s2-ruler','ruler'],[2,'s2-zoombox','zoombox'],
  [3,'s3-pan','pan'],[3,'s3-select','select'],[3,'s3-ruler','ruler'],[3,'s3-zoombox','zoombox']
@@ -2271,7 +2257,7 @@ function snapToEdge(wx,wy){
 }
 
 // ═══════════════════════════════════════════════
-// HIT TEST FRAME CENTRE (for drag-by-centre)
+// HIT TEST FRAME CENTRE
 // ═══════════════════════════════════════════════
 function isFrameHidden(i){
   var f=scanFrames[i];if(!f)return false;
@@ -2282,7 +2268,7 @@ function isFrameHidden(i){
   return false;
 }
 function hitTestFrameForSelect(wx,wy){
-  // Hits frame border (within 8 screen px) or centre dot — skips hidden frames
+  // Frame border (8 px) or centre dot; skips hidden frames
   var dbunit=lib?lib.dbunit:1e-9;
   var thresh=8/zoom;
   for(var i=scanFrames.length-1;i>=0;i--){
@@ -2304,7 +2290,7 @@ function hitTestFrameForSelect(wx,wy){
   return -1;
 }
 function framesInSelectBox(sxMin,syMin,sxMax,syMax){
-  // Returns indices of frames whose centre OR all 4 corners are inside the screen-space box
+  // Frames with centre or all corners inside the box
   var dbunit=lib?lib.dbunit:1e-9;
   var result=[];
   for(var i=0;i<scanFrames.length;i++){
@@ -2342,7 +2328,7 @@ function applyZoomBox(activeC){
 }
 
 // ═══════════════════════════════════════════════
-// PAN / ZOOM — unified handler for all three canvases
+// PAN / ZOOM
 // ═══════════════════════════════════════════════
 function setupPanZoom(c,onRedraw,step){
   var dragging=false,dragStart=null,moveDragStart=null;
@@ -2356,7 +2342,7 @@ function setupPanZoom(c,onRedraw,step){
     var wxy=s2w(sx,sy),wx=wxy[0],wy=wxy[1];
     var t=getCurrentToolLocal();
 
-    // ── PLACING MODES: highest priority — fire regardless of active tool ──
+    // ── PLACING MODES ──
     if(isScan&&placingMode&&e.button===0){
       var sizeUm=parseInt(document.getElementById('frame-size-sel').value);
       var cx2=snapToNm(wx),cy2=snapToNm(wy);
@@ -2408,7 +2394,7 @@ function setupPanZoom(c,onRedraw,step){
       e.preventDefault();return;
     }
 
-    // ── RULER: two-click ──
+    // ── RULER ──
     if(t==='ruler'&&e.button===0){
       var snapped=snapToEdge(wx,wy);
       if(!rulerPt1||rulerComplete){rulerPt1=snapped;rulerPt2=null;rulerComplete=false;}
@@ -2419,7 +2405,7 @@ function setupPanZoom(c,onRedraw,step){
       onRedraw();e.preventDefault();return;
     }
 
-    // ── ZOOM BOX: drag ──
+    // ── ZOOM BOX ──
     if(t==='zoombox'&&e.button===0){
       zoomBoxStart=[sx,sy];zoomBoxEnd=[sx,sy];zoomBoxDragging=true;
       e.preventDefault();return;
@@ -2480,7 +2466,7 @@ function setupPanZoom(c,onRedraw,step){
     // Zoom box live drag
     if(t==='zoombox'&&zoomBoxDragging){zoomBoxEnd=[sx,sy];onRedraw();}
 
-    // Scan: placing preview or cursor updates
+    // Placing preview and cursor
     if(isScan&&placingMode){
       var sz=parseInt(document.getElementById('frame-size-sel').value);
       previewFrame={cx:wx,cy:wy,sizeUm:sz};redrawScan();
@@ -2586,7 +2572,7 @@ setupPanZoom(scanCanvas,redrawScan,2);
 setupPanZoom(exportCanvas,redrawExport,3);
 
 // ═══════════════════════════════════════════════
-// GLOBAL ESC HANDLER (document-level so it always fires)
+// GLOBAL ESC HANDLER
 // ═══════════════════════════════════════════════
 document.addEventListener('keydown',function(e){
   // Enter dismisses modals if visible
@@ -2594,7 +2580,7 @@ document.addEventListener('keydown',function(e){
     var cmodal=document.getElementById('clear-modal');
     if(cmodal&&!cmodal.classList.contains('hidden')){
       e.preventDefault();
-      // Only cancel (not confirm) if the Cancel button is still primary/blue
+      // Cancel only if Cancel is the primary button
       if(document.getElementById('clear-modal-cancel').classList.contains('primary')){
         closeClearModal();
       }
@@ -2611,12 +2597,12 @@ document.addEventListener('keydown',function(e){
       return;
     }
   }
-  // Delete / Backspace — remove all selected frames (undoable)
+  // Delete/Backspace: remove selected frames (undoable)
   if(e.key==='Delete'||e.key==='Backspace'){
     var tag=(document.activeElement||{}).tagName||'';
     if(tag!=='INPUT'&&tag!=='TEXTAREA'&&tag!=='SELECT'&&selectedFrameIndices.size>0){
       e.preventDefault();
-      // Process indices descending so splices don't shift remaining targets
+      // Descending order keeps splice indices valid
       var delIdxs=Array.from(selectedFrameIndices).sort(function(a,b){return b-a;});
       var delCount=delIdxs.length;
       var deleted=[];
@@ -2655,7 +2641,7 @@ document.addEventListener('keydown',function(e){
     document.getElementById('place-array-btn').textContent='Place array';
   }
   if(fgoPickMode){cancelPickMerge();return;}
-  // Select tool: first ESC clears selection/operations, second ESC returns to pan
+  // Select tool: first ESC clears, second returns to pan
   if(getCurrentTool()==='select'){
     var hadSelState=false;
     if(movingMultiple){
@@ -2677,9 +2663,9 @@ document.addEventListener('keydown',function(e){
       if(currentStep===1)redraw();else if(currentStep===2)redrawScan();else redrawExport();
       return; // Stay in select tool
     }
-    // Nothing left selected — fall through to return to pan
+    // Nothing selected: return to pan
   }
-  // Cancel frame drag (pan tool) — restore original position
+  // Cancel frame drag: restore position
   if(movingIdx>=0){
     if(movingOrigin){scanFrames[movingIdx].cx=movingOrigin.cx;scanFrames[movingIdx].cy=movingOrigin.cy;}
     movingIdx=-1;moveDragStart=null;movingOrigin=null;
@@ -2757,7 +2743,7 @@ function undoLastAction(){
     removed.forEach(function(rf){removeFrameFromAnyGroup(rf);});
     document.getElementById('scan-hint').textContent='Undid import of '+action.count+' frame'+(action.count===1?'':'s')+'.';
   } else if(action.type==='deleteSelected'){
-    // Restore frames in ascending origIdx order so each splice shifts correctly
+    // Restore in ascending origIdx order
     action.deleted.forEach(function(d){
       scanFrames.splice(d.origIdx,0,d.frame);
       if(d.groupInfo){
@@ -3003,11 +2989,11 @@ function updateFrameList(){
         div.querySelector('.frame-check').addEventListener('click',function(e){
           e.stopPropagation();
           if(e.shiftKey&&lastSelectedIdx>=0){
-            // Additive range select — does not clear existing selection
+            // Additive range select
             var lo=Math.min(lastSelectedIdx,idx),hi=Math.max(lastSelectedIdx,idx);
             for(var ii=lo;ii<=hi;ii++)selectedFrameIndices.add(ii);
           } else {
-            // Always additive toggle — never clears other selections
+            // Additive toggle
             if(selectedFrameIndices.has(idx))selectedFrameIndices.delete(idx);
             else{selectedFrameIndices.add(idx);lastSelectedIdx=idx;}
           }
@@ -3112,17 +3098,17 @@ function updateFrameList(){
         updateFrameList();
         return;
       }
-      // Set active group (shows blue bar) on any normal click
+      // Click sets the active group
       activeGroupId=grp.id;
       grp.collapsed=!grp.collapsed;updateFrameList();
     });
     return header;
   }
 
-  // Walk scanFrames in order; emit group blocks then ungrouped frames
+  // Group blocks, then ungrouped frames
   var emittedGroups=new Set();
   var hasUngrouped=false;
-  // First pass: determine if there are ungrouped frames
+  // Any ungrouped frames?
   var groupedSet=new Set();
   frameGroups.forEach(function(g){g.frames.forEach(function(f){groupedSet.add(f);});});
   for(var i=0;i<scanFrames.length;i++){if(!groupedSet.has(scanFrames[i])){hasUngrouped=true;break;}}
@@ -3144,7 +3130,7 @@ function updateFrameList(){
       }
     } else if(!grp){
       if(!rendered.has(f)&&hasUngrouped&&emittedGroups.size>0&&!rendered.size){
-        // Will add header below before first ungrouped — handled outside loop
+        // Ungrouped header added after the loop
       }
     }
   }
@@ -3210,7 +3196,7 @@ function buildExport(){
     for(var i=0;i<N;i++){
       var item=ordered[i], f=item.f;
       var wf=getWF(f.sizeUm);
-      // Group header row — shown whenever the group changes
+      // Group header row (on group change)
       if(item.groupName!==lastGroup){
         var hdr=document.createElement('tr');
         hdr.className='ft-group-hdr';
@@ -3219,7 +3205,7 @@ function buildExport(){
         tbody.appendChild(hdr);
         lastGroup=item.groupName;
       }
-      // Write field change row — shown before the first frame needing a different WF
+      // Writefield change row
       if(!lastWF||lastWF.wf!==wf.wf){
         var wfRow=document.createElement('tr');
         wfRow.className='ft-wf-change';
@@ -3251,7 +3237,7 @@ function loadLib(parsed){
   document.getElementById('st-cells').textContent=Object.keys(lib.cells).length;
   document.getElementById('st-unit').textContent=lib.dbunit?(lib.dbunit*1e9).toFixed(2)+' nm':'—';
   document.getElementById('drop-overlay').classList.add('hidden');
-  // Restore any existing scan frames into the new cell
+  // Restore scanframes into the new cell
   if(scanFrames.length>0)rebuildFrameOverlay();
 }
 function buildCells(){
@@ -3263,11 +3249,11 @@ function buildCells(){
     div.addEventListener('click',function(){selectCell(name);});
     list.appendChild(div);
     if(!fallback)fallback=name;
-    // Skip $$$ metadata cells for auto-selection; use first non-metadata cell
+    // Auto-select the first non-metadata cell
     if(!first&&name.indexOf('$$$')!==0)first=name;
   });
   if(first)selectCell(first);
-  else if(fallback)selectCell(fallback); // all cells are metadata — select first anyway
+  else if(fallback)selectCell(fallback); // all metadata: select the first
 }
 function selectCell(name){
   document.querySelectorAll('.cell-item').forEach(function(el){el.classList.toggle('active',el.dataset.name===name);});
@@ -3325,7 +3311,7 @@ ro.observe(exportCanvas.parentElement);
 setTimeout(resizeAll,50);
 
 // ═══════════════════════════════════════════════
-// MAPPING TOOLTIP (fixed position, escapes overflow)
+// MAPPING TOOLTIP
 // ═══════════════════════════════════════════════
 (function(){
   var trigger=document.querySelector('.mapping-tip-trigger');
@@ -3335,7 +3321,7 @@ setTimeout(resizeAll,50);
     tip.style.display='block';
     var r=trigger.getBoundingClientRect();
     var tw=tip.offsetWidth, th=tip.offsetHeight;
-    // Prefer above; fall back to below if not enough room
+    // Above, else below
     var top=r.top-th-8;
     if(top<8)top=r.bottom+8;
     var left=r.left;
@@ -3407,7 +3393,7 @@ function startArrayPlacing(){
   arrayColSpacing=parseFloat(document.getElementById('arr-col-sp').value);
   document.getElementById('array-popup').classList.add('hidden');
   arrayPlacingMode=true;previewArrayPos=null;
-  // Style buttons: single frame inactive, array button active, Place array engaged
+  // Button states for array mode
   document.getElementById('place-btn').classList.remove('placing');
   document.getElementById('place-btn').classList.add('inactive');
   document.getElementById('place-btn').textContent='+ Single frame';
@@ -3556,12 +3542,12 @@ function setupSidebarResize(sidebarEl,handleEl,minW,maxW,flipDrag){
     handleEl.classList.remove('dragging');document.body.style.cursor='';document.body.style.userSelect='';
   });
 }
-// Vertical row resize — drag handle between two stacked flex children
+// Vertical resize handle between stacked panels
 function setupRowResize(topEl,handleEl,minH){
   var startY,startH,dragging=false;
   handleEl.addEventListener('mousedown',function(e){
     e.preventDefault();dragging=true;startY=e.clientY;startH=topEl.getBoundingClientRect().height;
-    // Pin top section to its current pixel height so bottom section fills the rest
+    // Fix top height; bottom fills the rest
     topEl.style.flex='none';topEl.style.height=startH+'px';
     handleEl.classList.add('dragging');document.body.style.cursor='row-resize';document.body.style.userSelect='none';
   });
